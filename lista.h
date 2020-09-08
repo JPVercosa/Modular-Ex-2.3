@@ -2,7 +2,7 @@
 
 typedef struct lista Lista;
 
-Lista *lst_cria(void elem);
+Lista *lst_cria(void);
 int lst_vazia(Lista* ls);
 void lst_insIni(Lista* ls, void* elem);
 void lst_insFin(Lista* ls, void* elem);

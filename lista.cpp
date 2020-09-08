@@ -17,14 +17,26 @@ struct lista {
   No *corr;
 };
 
-Lista *lst_cria(void elem){
-  //JG
-
+Lista *lst_cria(void) { //cria lista vazia (header)
+    
+    Lista *ls = (Lista*) malloc(sizeof(Lista));
+    if (ls == NULL) {
+        printf("\n\nMemoria insuficiente\n\n");
+        exit(1);
+    }
+    
+    ls->tam = 0;
+    ls->ini = NULL;
+    ls->fim = NULL;
+    ls->corr = NULL;
+    
+    return ls;
 }
 
-int lst_vazia(Lista* ls){
- //JG
-  
+int lst_vazia(Lista* ls) { //retorna 1 se a lista estiver vazia ou 0, caso contrario.
+    int vazia;
+    ls->tam == 0 ? vazia = 1 : vazia = 0;
+    return vazia;
 }
 
 void lst_insIni(Lista* ls, void* elem){

@@ -8,6 +8,7 @@ struct no{
   struct no *ant;
 }; 
 
+
 typedef struct no No;
 
 struct lista {

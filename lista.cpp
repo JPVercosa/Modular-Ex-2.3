@@ -50,7 +50,7 @@ void *lst_retFin(Lista* ls){
 void lst_posIni(Lista* ls){
   if (lst_vazia(ls)) {
 		printf("Lista Vazia");
-    ls->corr = NULL;
+		ls->corr = NULL;
  } 
   else {
 		No temp = ls->ini;

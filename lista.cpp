@@ -129,17 +129,48 @@ void lst_posFin(Lista* ls){
   }
 }
 
-void *lst_prox(Lista* ls){
-  //JG
-  
+void *lst_prox(Lista* ls) {
+  if (ls->corr == NULL) {
+      return NULL;
+  }
+  else {
+      No *aux = ls->ini;
+      while (aux->prox != NULL) {
+          if (aux == ls->corr) {
+              ls->corr = ls->corr->prox;
+              return aux->info;
+          }
+          else {
+              aux = aux->prox;
+          }
+      }
+  }
 }
 
-void *lst_ant(Lista* ls){
-  //JG
-  
+void *lst_ant(Lista* ls) {
+  if (ls->corr == NULL) {
+      return NULL;
+  }
+  else {
+      No *aux = ls->fim;
+      while (aux->ant != NULL) {
+          if (aux == ls->corr) {
+              ls->corr = ls->corr->prox;
+              return aux->info;
+          }
+          else {
+              aux = aux->ant;
+          }
+      }
+  }
 }
 
-void lst_libera(Lista* ls){
-  //JG
-  
+void lst_libera(Lista* ls) {
+    while (ls->ini != NULL) {
+        No *aux = ls->ini;
+        ls->ini = ls->ini->prox;
+        free(aux);
+    }
+    free(ls);
+    return;
 }

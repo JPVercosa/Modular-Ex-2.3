@@ -2,13 +2,11 @@
 #include <stdio.h>
 #include "lista.h"
 
-struct no{
+struct no {
   void *info;
   struct no *prox;
   struct no *ant;
 }; 
-
-typedef struct no No;
 
 struct lista {
   int tam;
@@ -40,53 +38,95 @@ int lst_vazia(Lista* ls) { //retorna 1 se a lista estiver vazia ou 0, caso contr
 }
 
 void lst_insIni(Lista* ls, void* elem){
- //Matheus 
-  
+  No * n = (No *)malloc(sizeof(No));
+  if (n == NULL){
+    printf("\n\nlst_insIni: Memoria insuficiente\n\n");
+    exit(1);
+  }
+
+  n->info = elem;
+  if (lst_vazia(ls)){
+    n->ant = n->prox = NULL;
+    ls->ini = ls->fim = n;
+  } else {
+    n->ant = NULL;
+    n->prox = ls->ini;
+    ls->ini->ant = n;
+    ls->ini = n;
+  }
+  ls->tam += 1;
 }
 
 void lst_insFin(Lista* ls, void* elem){
- //Matheus 
-  
+  No * n = (No *)malloc(sizeof(No));
+  if (n == NULL){
+    printf("\n\nlst_insFin: Memoria insuficiente\n\n");
+    exit(1);
+  }
+
+  n->info = elem;
+  if(lst_vazia(ls)){
+    n->ant = n->prox = NULL;
+    ls->ini = ls->fim = n;
+  } else {
+    n->ant = ls->fim;
+    n->prox = NULL;
+    ls->fim->prox = n;
+    ls->fim = n;
+  }
+  ls->tam += 1;
 }
 
 void *lst_retIni(Lista* ls){
- //Matheus 
-  
+  if (lst_vazia(ls)) return NULL;
+  void * el = ls->ini->info;
+  ls->ini = ls->ini->prox; //ini agora eh o segundo
+  ls->ini->ant->prox = NULL; //ini agora nao eh mais o proximo de ninguem
+  ls->ini->ant = NULL; //anterior do ini eh o NULL
+  ls->tam -= 1;
+  return el;
 }
 
 void *lst_retFin(Lista* ls){
- //Matheus 
-  
+  if (lst_vazia(ls)) return NULL;
+  void * el = ls->fim->info;
+  ls->fim = ls->fim->ant; //fim agora eh o penultimo
+  ls->fim->prox->ant = NULL; //fim agora nao eh mais o anterior de ninguem
+  ls->fim->prox = NULL; //proximo do fim eh o NULL
+  ls->tam -= 1;
+  return el;
 }
 
 void lst_posIni(Lista* ls){
   if (lst_vazia(ls)) {
     printf("Lista Vazia");
     ls->corr = NULL;
- } 
+  } 
   else {
-	  No temp = ls->ini;
+	  No * temp = ls->ini;
 	  while(temp->prox != NULL) {
 	    if (temp->ant==NULL) {
         ls->corr = temp;
       }
       temp=temp->prox;
     }
+  }
 }
 
 void lst_posFin(Lista* ls){
   if (lst_vazia(ls)) {
     printf("Lista Vazia");
     ls->corr = NULL;
- } 
+  } 
   else {
-    No temp = ls->fin;
+    No * temp = ls->fim;
     while(temp->ant != NULL) {
       if (temp->prox==NULL) {
         ls->corr = temp;
       }
       temp=temp->ant;
     }
+  }
 }
 
 void *lst_prox(Lista* ls){

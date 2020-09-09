@@ -1,5 +1,6 @@
 /*TAD Lista*/
 
+typedef struct no No;
 typedef struct lista Lista;
 
 Lista *lst_cria(void);

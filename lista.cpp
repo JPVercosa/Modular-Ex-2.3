@@ -101,15 +101,16 @@ void lst_posIni(Lista* ls){
   if (lst_vazia(ls)) {
     printf("Lista Vazia");
     ls->corr = NULL;
-  } 
+  }
   else {
-	  No * temp = ls->ini;
-	  while(temp->prox != NULL) {
-	    if (temp->ant==NULL) {
-        ls->corr = temp;
+      No * temp = ls->ini;
+      ls->corr = ls->ini;
+      while(temp->prox != NULL) {
+        if (temp->ant==NULL) {
+          ls->corr = temp;
+        }
+        temp=temp->prox;
       }
-      temp=temp->prox;
-    }
   }
 }
 
@@ -117,9 +118,10 @@ void lst_posFin(Lista* ls){
   if (lst_vazia(ls)) {
     printf("Lista Vazia");
     ls->corr = NULL;
-  } 
+  }
   else {
     No * temp = ls->fim;
+    ls->corr = ls->fim;
     while(temp->ant != NULL) {
       if (temp->prox==NULL) {
         ls->corr = temp;

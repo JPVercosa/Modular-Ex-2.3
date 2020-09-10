@@ -31,19 +31,19 @@ int main(void) {
   lst_insFin(f,d);
   
   exibeLista(f);
-  aux=lst_retIni(f);
+  aux=(int*)lst_retIni(f);
   printf("*** Elemento Retirado %d ***\n",*aux);
   
   exibeLista(f);
-  aux=lst_retIni(f);
+  aux=(int*)lst_retIni(f);
   printf("*** Elemento Retirado %d ***\n",*aux);
   
   exibeLista(f);
-  aux=lst_retFin(f);
+  aux=(int*)lst_retFin(f);
   printf("*** Elemento Retirado %d ***\n",*aux);
   
   exibeLista(f);
-  aux=lst_retFin(f);
+  aux=(int*)lst_retFin(f);
   printf("*** Elemento Retirado %d ***\n",*aux);
   
   exibeLista(f);

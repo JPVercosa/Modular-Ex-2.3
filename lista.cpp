@@ -144,6 +144,8 @@ void *lst_prox(Lista* ls) {
               aux = aux->prox;
           }
       }
+      ls->corr = NULL;
+      return aux->info;
   }
 }
 
@@ -162,6 +164,8 @@ void *lst_ant(Lista* ls) {
               aux = aux->ant;
           }
       }
+      ls->corr = NULL;
+      return aux->info;
   }
 }
 

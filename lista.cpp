@@ -81,8 +81,10 @@ void *lst_retIni(Lista* ls){
   if (lst_vazia(ls)) return NULL;
   void * el = ls->ini->info;
   ls->ini = ls->ini->prox; //ini agora eh o segundo
-  ls->ini->ant->prox = NULL; //ini agora nao eh mais o proximo de ninguem
-  ls->ini->ant = NULL; //anterior do ini eh o NULL
+  if (ls->ini != NULL) {
+    ls->ini->ant->prox = NULL; //ini agora nao eh mais o proximo de ninguem
+    ls->ini->ant = NULL; //anterior do ini eh o NULL
+  }
   ls->tam -= 1;
   return el;
 }
@@ -90,16 +92,18 @@ void *lst_retIni(Lista* ls){
 void *lst_retFin(Lista* ls){
   if (lst_vazia(ls)) return NULL;
   void * el = ls->fim->info;
-  ls->fim = ls->fim->ant; //fim agora eh o penultimo
-  ls->fim->prox->ant = NULL; //fim agora nao eh mais o anterior de ninguem
-  ls->fim->prox = NULL; //proximo do fim eh o NULL
+  ls->fim = ls->fim->ant;//fim agora eh o penultimo
+  if (ls->fim != NULL) {
+    ls->fim->prox->ant = NULL; //fim agora nao eh mais o anterior de ninguem
+    ls->fim->prox = NULL; //proximo do fim eh o NULL
+  }
   ls->tam -= 1;
   return el;
 }
 
 void lst_posIni(Lista* ls){
   if (lst_vazia(ls)) {
-    printf("Lista Vazia");
+    puts("Lista Vazia");
     ls->corr = NULL;
   }
   else {
@@ -107,16 +111,16 @@ void lst_posIni(Lista* ls){
       ls->corr = ls->ini;
       while(temp->prox != NULL) {
         if (temp->ant==NULL) {
-          ls->corr = temp;
-        }
-        temp=temp->prox;
+        ls->corr = temp;
       }
+      temp=temp->prox;
+    }
   }
 }
 
 void lst_posFin(Lista* ls){
   if (lst_vazia(ls)) {
-    printf("Lista Vazia");
+    puts("Lista Vazia");
     ls->corr = NULL;
   }
   else {

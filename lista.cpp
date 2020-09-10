@@ -166,10 +166,11 @@ void *lst_ant(Lista* ls) {
 }
 
 void lst_libera(Lista* ls) {
-    while (ls->ini != NULL) {
-        No *aux = ls->ini;
-        ls->ini = ls->ini->prox;
-        free(aux);
+    while (lst_vazia(ls) == 0) {
+        No *aux = ls->ini->prox;
+        free(ls->ini);
+        ls->ini = aux;
+        ls->tam -= 1;
     }
     free(ls);
     return;

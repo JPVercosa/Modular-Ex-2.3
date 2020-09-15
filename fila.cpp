@@ -27,7 +27,7 @@ int fila_vazia(Fila *f) {
 
 }*/
 
-/*void fila_livera(fila *f){
+/*void fila_libera(fila *f){
 
 }*/
 

@@ -6,10 +6,17 @@ struct fila {
   Lista *lst;
  };
  
- /*Fila *fila_cria(void elem){
-
-  return 0;
-}*/
+Fila *fila_cria(void elem){
+  Fila *f = (Fila*)malloc(sizeof(Fila));
+  if (f==NULL) {
+    printf("\nMemória Insuficiente --> fila_cria()\n")
+    exit(1);
+  }
+  ls = lst_cria();
+  f->lst = ls;
+  
+  return f;
+}
  
 int fila_vazia(Fila *f) {
   if (f->lst->tam == 0){

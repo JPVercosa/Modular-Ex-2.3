@@ -11,10 +11,12 @@ struct fila {
   return 0;
 }*/
  
-/*int fila_vazia(Fila *f){
- 
-  return 0;
-}*/
+int fila_vazia(Fila *f) {
+  if (f->lst->tam == 0){
+    return 1;
+  } else {
+    return 0;
+}
  
 /*void fila_enq(Fila *f, void *elem){
  

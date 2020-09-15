@@ -6,7 +6,7 @@ struct fila {
   Lista *lst;
  };
  
-Fila *fila_cria(void elem){
+Fila *fila_cria(void){
   Fila *f = (Fila*)malloc(sizeof(Fila));
   if (f==NULL) {
     printf("\nMemória Insuficiente --> fila_cria()\n")

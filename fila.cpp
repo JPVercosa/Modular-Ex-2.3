@@ -27,9 +27,11 @@ int fila_vazia(Fila *f) {
 
 }*/
 
-/*void fila_libera(fila *f){
-
-}*/
+void fila_libera(fila *f){
+  lst_libera(f->lst);
+  free ls;
+  return;
+}
 
  
  

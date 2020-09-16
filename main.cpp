@@ -4,18 +4,22 @@
 #include "vetor.h"
 
 int main(void) {
-  Fila *f=fila_cria();
-  Vetor *v1=vet_cria(1.0,1.0);
-  Vetor *v2=vet_cria(2.0,2.0);
-  Vetor *v3=vet_cria(3.0,3.0);
+  //char * vet;
+  Fila *f = fila_cria();
+  Vetor *v1 = vet_cria(1.0,1.0);
+  Vetor *v2 = vet_cria(2.0,2.0);
+  Vetor *v3 = vet_cria(3.0,3.0);
+
   fila_enq(f,v1);
   fila_enq(f,v2);
   fila_enq(f,v3);
-    while(!fila_vazia(f)) {
-      Vetor *aux=(Vetor *) fila_deq(f);
-      char vet[20];
-      puts(vet_format(aux,vet));
-}
+
+  while(!fila_vazia(f)) {
+    Vetor *aux = (Vetor *) fila_deq(f);
+    char vet[20];
+    puts(vet_format(aux,vet));
+  }
+
   fila_libera(f);
   return 0;
 }

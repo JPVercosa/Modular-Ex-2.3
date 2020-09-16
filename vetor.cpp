@@ -45,13 +45,14 @@ float vet_prod_int(Vetor* v1, Vetor* v2){
 }
 
 char *vet_format(Vetor* v1, char* s){
-    char* str = (char*) malloc(10*sizeof(char));
-    if (str == NULL) {
-        printf("Memória insuficiente!\n");
-        exit(1);
-   } 
-    sprintf(str, "(%02f,%02f)", v1->x, v1->y); 
-    return str;
+    // char* str = (char*) malloc(10*sizeof(char));
+    // if (str == NULL) {
+    //     printf("Memória insuficiente! -> vet_format\n");
+    //     exit(1);
+    // } 
+    //printf("Entrou no vet_format\n");
+    sprintf(s, "(%.2f,%.2f)", v1->x, v1->y); 
+    return s;
 }
 
 void vet_libera(Vetor* v){
